@@ -1,0 +1,83 @@
+{
+  "manifest_version": 3,
+  "name": "CutLing",
+  "version": "0.3.1",
+  "description": "집중 검색 세션 탭에서만 네이버 검색 결과를 판별하고, 읽는 페이지마다 같은 패널로 글을 모은다.",
+  "permissions": [
+    "storage"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "host_permissions": [
+    "http://localhost:8000/*"
+  ],
+  "content_scripts": [
+    {
+      "matches": [
+        "https://search.naver.com/search.naver*"
+      ],
+      "js": [
+        "common.js",
+        "content.js"
+      ],
+      "css": [
+        "content.css"
+      ],
+      "run_at": "document_idle"
+    },
+    {
+      "matches": [
+        "http://*/*",
+        "https://*/*"
+      ],
+      "exclude_matches": [
+        "https://search.naver.com/*",
+        "http://localhost/*",
+        "http://127.0.0.1/*"
+      ],
+      "js": [
+        "common.js",
+        "page.js"
+      ],
+      "css": [
+        "content.css"
+      ],
+      "run_at": "document_idle"
+    },
+    {
+      "matches": [
+        "http://localhost:8000/*",
+        "http://127.0.0.1:8000/*"
+      ],
+      "js": [
+        "bridge.js"
+      ],
+      "run_at": "document_idle"
+    }
+  ],
+  "icons": {
+    "16": "brand/icon16.png",
+    "48": "brand/icon48.png",
+    "128": "brand/icon128.png"
+  },
+  "action": {
+    "default_icon": {
+      "16": "brand/icon16.png",
+      "48": "brand/icon48.png",
+      "128": "brand/icon128.png"
+    },
+    "default_title": "CutLing"
+  },
+  "web_accessible_resources": [
+    {
+      "resources": [
+        "brand/*.png"
+      ],
+      "matches": [
+        "http://*/*",
+        "https://*/*"
+      ]
+    }
+  ]
+}

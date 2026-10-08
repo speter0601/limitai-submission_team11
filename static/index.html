@@ -1,0 +1,176 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CutLing</title>
+  <link rel="icon" type="image/png" href="/static/brand/symbol-green.png">
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <a href="/" class="brand" aria-label="CutLing 처음으로">
+        <img class="brand-symbol" src="/static/brand/symbol-green.png" alt="">
+        <img class="brand-word" src="/static/brand/wordmark-black.png" alt="CutLing">
+      </a>
+      <div class="row">
+        <a href="/?view=notes" class="nav-link">내 학습 노트</a>
+        <a href="/?view=notes" id="ext-status" class="pill pill-muted">확장 확인 중…</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section id="home-view">
+      <div class="hero">
+        <img class="hero-symbol" src="/static/brand/symbol-green.png" alt="">
+        <h1>찾고, 모으고, 묻고,<br>리포트로 받아 보세요</h1>
+        <p class="hero-sub">네이버 검색에서 홍보·샛길 글은 접어 두고, 직접 담은 글만으로 HyperCLOVA X가 학습 리포트를 만들어요.</p>
+
+        <form id="start-form" class="searchbox">
+          <input id="start-input" placeholder="무엇을 알아보고 싶나요?" maxlength="100" required autocomplete="off">
+          <button id="start-btn" class="btn btn-primary">집중 검색 시작</button>
+        </form>
+        <div class="examples">
+          <button type="button" class="chip-btn">컴활 1급 독학 합격 후기</button>
+          <button type="button" class="chip-btn">비전공자 AI 개발자 공부 순서</button>
+          <button type="button" class="chip-btn">정보처리기사 실기 독학</button>
+        </div>
+      </div>
+    </section>
+
+    <section id="notes-view" hidden>
+      <div class="container narrow">
+        <div id="resume" class="resume" hidden>
+          <div class="resume-text">
+            <span class="pill">진행 중</span>
+            <b id="resume-query"></b>
+            <span id="resume-meta" class="muted small"></span>
+          </div>
+          <div class="row">
+            <a id="resume-dash" class="btn btn-sm">열기</a>
+            <button id="resume-go" class="btn btn-sm btn-primary">이어서 검색</button>
+          </div>
+        </div>
+
+        <div id="install-banner" class="banner" hidden>
+          <strong>크롬 확장 프로그램을 설치해야 네이버 화면에서 걸러 줘요</strong>
+          <p class="muted small">chrome://extensions → 개발자 모드 → '압축해제된 확장 프로그램 로드' → 프로젝트의 <code>extension</code> 폴더</p>
+        </div>
+
+        <section class="section">
+          <div class="section-head">
+            <h2>내 학습 노트</h2>
+            <span id="session-count" class="muted small"></span>
+          </div>
+          <div id="session-list" class="session-grid"></div>
+        </section>
+      </div>
+    </section>
+
+    <section id="detail-view" class="container" hidden>
+      <a href="/?view=notes" class="back">← 내 학습 노트</a>
+      <div class="detail-head">
+        <div class="detail-title-wrap">
+          <div class="row">
+            <span id="d-status" class="pill"></span>
+            <span id="d-meta" class="muted small"></span>
+          </div>
+          <h1 id="d-query" class="detail-title"></h1>
+          <p id="d-intent" class="muted small"></p>
+        </div>
+        <div class="row">
+          <button id="d-continue" class="btn">이어서 검색</button>
+          <button id="d-end" class="btn btn-primary">검색 마치기</button>
+        </div>
+      </div>
+
+      <nav id="stepper" class="stepper">
+        <button data-tab="overview"><span class="dot">1</span><span class="label">검색</span><span class="sub" id="st-overview"></span></button>
+        <button data-tab="posts"><span class="dot">2</span><span class="label">모으기</span><span class="sub" id="st-posts"></span></button>
+        <button data-tab="ask"><span class="dot">3</span><span class="label">묻기</span><span class="sub" id="st-ask"></span></button>
+        <button data-tab="report"><span class="dot">4</span><span class="label">리포트</span><span class="sub" id="st-report"></span></button>
+      </nav>
+
+      <section id="d-wrap" class="wrap" hidden>
+        <div>
+          <span class="pill">검색 완료</span>
+          <h2 id="w-title"></h2>
+          <p id="w-recap" class="muted"></p>
+        </div>
+        <div class="wrap-actions">
+          <button id="w-report" class="btn btn-primary">학습 리포트 만들기</button>
+          <button id="w-ask" class="btn">담은 글에게 묻기</button>
+        </div>
+      </section>
+
+      <div id="tab-overview" class="tab">
+        <div id="d-kpis" class="kpis"></div>
+        <div class="grid">
+          <div class="card">
+            <div class="card-head">
+              <h3>다음 검색 로드맵</h3>
+              <span id="d-roadmap-progress" class="muted small"></span>
+            </div>
+            <div class="progress"><span id="d-roadmap-bar"></span></div>
+            <ol id="d-roadmap" class="roadmap"></ol>
+          </div>
+          <div class="card">
+            <div class="card-head"><h3>판별 결과</h3></div>
+            <div id="d-report"></div>
+          </div>
+        </div>
+      </div>
+
+      <div id="tab-posts" class="tab" hidden>
+        <div class="tab-intro">
+          <div>
+            <h3>담은 글 <span id="d-archive-count" class="count"></span></h3>
+            <p class="muted small">검색하며 '이 페이지 담기'로 모은 글이에요. 메모는 리포트에서 무엇을 강조할지 정하는 데 쓰여요.</p>
+          </div>
+        </div>
+        <div id="d-archive" class="archive"></div>
+      </div>
+
+      <div id="tab-ask" class="tab" hidden>
+        <div class="chat card">
+          <div class="chat-head">
+            <div>
+              <h3>담은 글에게 묻기</h3>
+              <p class="muted small">담은 글을 조각내 질문과 가까운 부분만 찾아(bge-m3) HCX-DASH-002가 출처와 함께 답해요. 글에 없는 내용은 지어내지 않아요.</p>
+            </div>
+          </div>
+          <div id="chat-log" class="chat-log"></div>
+          <div id="chat-suggest" class="chips"></div>
+          <form id="chat-form" class="chat-form">
+            <input id="chat-input" placeholder="예: 처음 시작하려면 뭐부터 해야 해?" maxlength="300" autocomplete="off">
+            <button id="chat-btn" class="btn btn-primary">묻기</button>
+          </form>
+        </div>
+      </div>
+
+      <div id="tab-report" class="tab" hidden>
+        <div id="report-empty" class="report-empty card" hidden>
+          <h3>학습 리포트</h3>
+          <p class="muted">담은 글만 근거로 HCX-007이 한 편의 리포트로 정리해요. 모든 문장에 출처 번호가 붙고, 코드가 번호를 다시 확인해요.</p>
+          <ul class="includes">
+            <li>한 줄 결론 · 핵심 정리</li>
+            <li>공통점 · 엇갈리는 점</li>
+            <li>따라 할 실행 계획</li>
+            <li>주의할 점 · 용어 정리</li>
+            <li>이해 확인 퀴즈 (HCX-DASH-002)</li>
+            <li>더 알아볼 검색어</li>
+          </ul>
+          <button id="r-generate" class="btn btn-primary">리포트 만들기</button>
+          <p id="r-note" class="muted small"></p>
+        </div>
+        <article id="report-doc" class="report" hidden></article>
+      </div>
+    </section>
+  </main>
+
+  <div id="toast" class="toast" hidden></div>
+  <script src="/static/app.js"></script>
+</body>
+</html>

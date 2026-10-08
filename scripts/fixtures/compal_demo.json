@@ -1,0 +1,19 @@
+{
+  "_note": "데모용 가상 검색 결과 (실제 네이버 화면 아님). 기대 판정: expected",
+  "query": "컴활 1급 독학 합격 후기",
+  "items": [
+    {"id": "r0", "is_ad": true, "url": "https://ad.example/compal-academy", "title": "컴활 1급 단기 합격반 - 수강료 30% 할인", "snippet": "실기 전문 강사의 1:1 첨삭, 합격 보장반 모집 중. 지금 상담 신청하세요.", "expected": "promo"},
+    {"id": "r1", "url": "https://blog.naver.com/a_user/111", "title": "컴활 1급 독학 3주 합격 후기 (필기+실기, 비전공 직장인)", "snippet": "퇴근 후 하루 2시간씩 기출 위주로 공부했어요. 필기는 CBT 기출 5회 반복, 실기는 액세스 쿼리에서 가장 많이 막혔고 함수 문제는 유형별로 정리했습니다.", "expected": "experience"},
+    {"id": "r2", "url": "https://blog.naver.com/b_user/222", "title": "컴활 1급 실기 독학 2트 합격, 떨어진 이유와 바꾼 공부법", "snippet": "첫 시험은 액세스 폼 문제에서 시간이 부족해 떨어졌어요. 두 번째엔 시간 배분표를 만들고 엑셀 계산작업을 먼저 풀었습니다. 점수표 공개합니다.", "expected": "experience"},
+    {"id": "r3", "url": "https://blog.naver.com/c_user/333", "title": "[솔직후기] 컴활 1급 혼자 하다 포기할 뻔… 이 인강으로 2주 합격", "snippet": "독학으로 두 번 떨어지고 ○○에듀 인강을 들었더니 바로 합격! 아래 링크로 신청하면 교재 무료 + 수강료 할인 쿠폰 드려요.", "expected": "promo"},
+    {"id": "r4", "url": "https://blog.naver.com/d_user/444", "title": "컴활 1급 합격 후기 | 교재 제공받아 작성한 공부 리뷰", "snippet": "출판사로부터 교재를 제공받아 작성한 글입니다. 이 교재 하나로 필기와 실기를 모두 준비했어요.", "expected": "promo"},
+    {"id": "r5", "url": "https://kin.naver.com/qna/555", "title": "컴활 1급 비전공자 독학으로 몇 주면 붙을 수 있을까요?", "snippet": "엑셀은 업무에서 조금 써 봤고 액세스는 처음입니다. 독학으로 합격하신 분들 기간이랑 순서 궁금해요.", "expected": "experience"},
+    {"id": "r6", "url": "https://blog.naver.com/e_user/666", "title": "토익 900 독학 두 달 합격 후기 – 리스닝 공부법", "snippet": "토익 리스닝은 쉐도잉으로, RC는 파트5 문법 문제집 세 권을 반복했어요.", "expected": "offtrack"},
+    {"id": "r7", "url": "https://blog.naver.com/f_user/777", "title": "1++ 한우 등심 집에서 굽는 법, 독학으로 터득한 꿀팁", "snippet": "한우 1등급 등심은 상온에 20분 두고 센 불에 한 번만 뒤집으세요.", "expected": "offtrack"},
+    {"id": "r8", "url": "https://blog.naver.com/g_user/888", "title": "컴활1급 독학 3주 합격 후기 (필기 실기, 비전공 직장인)", "snippet": "퇴근 후 하루 2시간씩 기출 위주로 공부했어요. 필기는 CBT 기출 5회 반복, 실기는 액세스 쿼리에서 가장 많이 막혔고 함수 문제는 유형별로 정리했습니다.", "expected": "duplicate"},
+    {"id": "r9", "url": "https://cafe.naver.com/h_cafe/999", "title": "컴활 1급 필기 기출 회독 순서 정리 (2026 개정 반영)", "snippet": "2026년 출제 기준 변경 사항과 과목별 기출 회독 순서, 자주 틀리는 데이터베이스 용어를 정리했습니다. 출처: 대한상공회의소 공지.", "expected": "experience"},
+    {"id": "r10", "url": "https://blog.naver.com/i_user/1010", "title": "컴활 1급 실기 합격! 학원 다니며 느낀 점 (원고료를 받았습니다)", "snippet": "△△컴퓨터학원 실기반 4주 과정 후기입니다. 이 포스팅은 학원으로부터 소정의 원고료를 받아 작성했습니다.", "expected": "promo"},
+    {"id": "r11", "url": "https://blog.naver.com/j_user/1111", "title": "컴활 1급 독학, 액세스 쿼리 문제 이렇게 풀었어요 (내돈내산 교재)", "snippet": "광고 아님, 내돈내산 시나공 교재로 공부했어요. 액세스 쿼리 문제는 조건식 패턴 7가지만 외우면 됩니다.", "expected": "experience"},
+    {"id": "r12", "url": "https://blog.naver.com/k_user/1212", "title": "엑셀 단축키 모음 – 직장인 업무 속도 2배", "snippet": "Ctrl+Shift+L 필터, Alt+= 자동합계 등 실무에서 자주 쓰는 단축키 30개.", "expected": "offtrack"}
+  ]
+}
